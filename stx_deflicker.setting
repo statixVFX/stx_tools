@@ -1,0 +1,118 @@
+{
+	Tools = ordered() {
+		stx_deflicker_1 = GroupOperator {
+			CtrlWZoom = false,
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "PipeRouter1_1",
+					Source = "Input",
+				},
+				Input1 = Input {
+					Value = 0,
+					Default = 0,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "TimeStretcher1_1",
+					Source = "SourceTime",
+					Name = "Reference Frame",
+					Default = 1001,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Blur2_1",
+					Source = "XBlurSize",
+					Default = 100,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "ChannelBooleans3_1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 1510, 270 },
+				Flags = {
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 441, 196.303, 220.5, 22 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				TimeStretcher1_1 = TimeStretcher {
+					CtrlWShown = false,
+					Inputs = {
+						SourceTime = Input { Value = 1001, },
+						Input = Input {
+							SourceOp = "PipeRouter1_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -157.5, 99.403 } },
+				},
+				Instance_Blur2_1 = Blur {
+					CtrlWShown = false,
+					SourceOp = "Blur2_1",
+					Inputs = {
+						Input = Input {
+							SourceOp = "PipeRouter1_1",
+							Source = "Output",
+						},
+						StartEndRenderScripts = Input { },
+						EffectMask = Input { }
+					},
+					ViewInfo = OperatorInfo { Pos = { -12, 98.6541 } },
+				},
+				Blur2_1 = Blur {
+					CtrlWShown = false,
+					Inputs = {
+						XBlurSize = Input { Value = 100, },
+						Input = Input {
+							SourceOp = "TimeStretcher1_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -157.5, 142.153 } },
+				},
+				ChannelBooleans3_1 = ChannelBoolean {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Operation = Input { Value = 6, },
+						Background = Input {
+							SourceOp = "PipeRouter1_1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "ChannelBooleans2_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 157.5, 142.153 } },
+				},
+				ChannelBooleans2_1 = ChannelBoolean {
+					CtrlWShown = false,
+					Inputs = {
+						Operation = Input { Value = 7, },
+						Background = Input {
+							SourceOp = "Blur2_1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Instance_Blur2_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -12, 142.153 } },
+				},
+				PipeRouter1_1 = PipeRouter {
+					ViewInfo = PipeRouterInfo { Pos = { -59.5, 26.402 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "stx_deflicker_1"
+}

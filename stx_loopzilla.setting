@@ -1,0 +1,166 @@
+{
+	Tools = ordered() {
+		stx_loopzilla = MacroOperator {
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "ct",
+					Source = "Image1",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "ct",
+					Source = "NumberIn1",
+					Default = 1020,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "ct",
+					Source = "NumberIn2",
+					Default = 1050,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "ct",
+					Source = "NumberIn3",
+					Default = 10,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "TimeStretcher2",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				ct = Custom {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						NumberIn1 = Input { Value = 1020, },
+						NumberIn2 = Input { Value = 1050, },
+						NumberIn3 = Input { Value = 10, },
+						LUTIn1 = Input {
+							SourceOp = "ctLUTIn1",
+							Source = "Value",
+						},
+						LUTIn2 = Input {
+							SourceOp = "ctLUTIn2",
+							Source = "Value",
+						},
+						LUTIn3 = Input {
+							SourceOp = "ctLUTIn3",
+							Source = "Value",
+						},
+						LUTIn4 = Input {
+							SourceOp = "ctLUTIn4",
+							Source = "Value",
+						},
+						NumberControls = Input { Value = 1, },
+						NameforNumber1 = Input { Value = "start", },
+						NameforNumber2 = Input { Value = "end", },
+						NameforNumber3 = Input { Value = "dissolve", },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 1151.72, 5.20446 } },
+				},
+				ctLUTIn1 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 0, Blue = 0 },
+				},
+				ctLUTIn2 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 204, Blue = 0 },
+				},
+				ctLUTIn3 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 0, Blue = 204 },
+				},
+				ctLUTIn4 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 204, Blue = 204 },
+				},
+				Dissolve1 = Dissolve {
+					Transitions = {
+						[0] = "DFTDissolve"
+					},
+					Inputs = {
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(time>(ct.NumberIn2-ct.NumberIn3),(time-(ct.NumberIn2-ct.NumberIn3)) / ct.NumberIn3,0)",
+						},
+						Background = Input {
+							SourceOp = "ct",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "TimeSpeed1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 1151.72, 173.858 } },
+				},
+				TimeSpeed1 = TimeSpeed {
+					Inputs = {
+						Delay = Input {
+							Value = 30,
+							Expression = "(ct.NumberIn2-ct.NumberIn1)",
+						},
+						InterpolateBetweenFrames = Input { Value = 0, },
+						SampleSpread = Input { Disabled = true, },
+						Input = Input {
+							SourceOp = "ct",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 1273.43, 121.353 } },
+				},
+				TimeStretcher2 = TimeStretcher {
+					Inputs = {
+						SourceTime = Input {
+							SourceOp = "TimeStretcher2SourceTime",
+							Source = "Value",
+							Expression = "(time%(ct.NumberIn2-ct.NumberIn1))+ct.NumberIn1",
+						},
+						InterpolateBetweenFrames = Input { Value = 0, },
+						SampleSpread = Input { Disabled = true, },
+						Input = Input {
+							SourceOp = "Dissolve1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 1151.72, 230.341 } },
+				},
+				TimeStretcher2SourceTime = BezierSpline {
+					SplineColor = { Red = 233, Green = 217, Blue = 243 },
+					NameSet = true,
+					KeyFrames = {
+						[1001] = { 0, Flags = { Linear = true } }
+					}
+				}
+			},
+		}
+	},
+	ActiveTool = "stx_loopzilla"
+}

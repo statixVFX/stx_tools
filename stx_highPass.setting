@@ -1,0 +1,162 @@
+{
+	Tools = ordered() {
+		stx_highPass = MacroOperator {
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "PipeRouter1",
+					Source = "Input",
+				},
+				Input1 = Input {
+					Value = 0,
+					Default = 0,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Blur1",
+					Source = "XBlurSize",
+					Default = 5,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Dissolve1",
+					Source = "Mix",
+					Name = "Invert",
+					Default = 0,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Gain",
+					Default = 1,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Gamma",
+					Default = 1,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Saturation",
+					Default = 1,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Low",
+					ControlGroup = 8,
+					Default = 0,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "High",
+					ControlGroup = 8,
+					Default = 1,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "ClipBlack",
+					Default = 0,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "ClipWhite",
+					Default = 0,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo {
+				Pos = { 928, 65 },
+				Flags = {
+					AllowPan = false,
+					AutoSnap = true,
+					RemoveRouters = true
+				},
+				Size = { 370, 331.3, 185, 22 },
+				Direction = "Horizontal",
+				PipeStyle = "Direct",
+				Scale = 1,
+				Offset = { 0, 0 }
+			},
+			Tools = ordered() {
+				Blur1 = Blur {
+					CtrlWShown = false,
+					Inputs = {
+						XBlurSize = Input { Value = 5, },
+						Input = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 2, 135.15 } },
+				},
+				ChannelBooleans1_1 = ChannelBoolean {
+					CtrlWShown = false,
+					Inputs = {
+						Operation = Input { Value = 7, },
+						Background = Input {
+							SourceOp = "Blur1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -122, 135.15 } },
+				},
+				ChannelBooleans1 = ChannelBoolean {
+					CtrlWShown = false,
+					Inputs = {
+						Operation = Input { Value = 7, },
+						Background = Input {
+							SourceOp = "PipeRouter1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Blur1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 122, 135.15 } },
+				},
+				Dissolve1 = Dissolve {
+					Transitions = {
+						[0] = "DFTDissolve"
+					},
+					CtrlWShown = false,
+					Inputs = {
+						Mix = Input { Value = 0, },
+						Background = Input {
+							SourceOp = "ChannelBooleans1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "ChannelBooleans1_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -12, 207.15 } },
+				},
+				BrightnessContrast1 = BrightnessContrast {
+					CtrlWShown = false,
+					Inputs = {
+						Gain = Input { Value = 0.5, },
+						Saturation = Input { Value = 0, },
+						ClipBlack = Input { Value = 1, },
+						ClipWhite = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "Dissolve1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -12, 277.15 } },
+				},
+				PipeRouter1 = PipeRouter {
+					ViewInfo = PipeRouterInfo { Pos = { 5, 61 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "stx_highPass"
+}

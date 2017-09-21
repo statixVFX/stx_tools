@@ -1,0 +1,235 @@
+{
+	Tools = ordered() {
+		stx_tileTexture = MacroOperator {
+			CtrlWZoom = false,
+			NameSet = true,
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "Rectangle1_2",
+					Source = "SoftEdge",
+					Default = 0.0971429,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "Rectangle1_2",
+					Source = "Width",
+					Default = 0.1638314533236,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Rectangle1_3",
+					Source = "SoftEdge",
+					Default = 0.0571429,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "Rectangle1_3",
+					Source = "Height",
+					Default = 0.2209214702331,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "ChangeDepth1_2",
+					Source = "Input",
+				},
+				Input5 = InstanceInput {
+					SourceOp = "frequency_1",
+					Source = "XBlurSize",
+					Name = "Shadow size",
+					Default = 54.04255,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "Dissolve1_2",
+					Source = "Mix",
+					Name = "Remove Shadows",
+					Default = 0,
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Dissolve1_2",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 701, 246 } },
+			Tools = ordered() {
+				Rectangle1_2 = RectangleMask {
+					CtrlWShown = false,
+					Inputs = {
+						SoftEdge = Input { Value = 0.1, },
+						Invert = Input { Value = 1, },
+						MaskWidth = Input { Value = 2048, },
+						MaskHeight = Input { Value = 1556, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Width = Input { Value = 0.2, },
+						Height = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -165, 76.15 } },
+				},
+				Rectangle1_3 = RectangleMask {
+					CtrlWShown = false,
+					Inputs = {
+						SoftEdge = Input { Value = 0.1, },
+						Invert = Input { Value = 1, },
+						MaskWidth = Input { Value = 2048, },
+						MaskHeight = Input { Value = 1556, },
+						PixelAspect = Input { Value = { 1, 1 }, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Width = Input { Value = 1, },
+						Height = Input { Value = 0.2, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -165, 142.15 } },
+				},
+				ChangeDepth1_2 = ChangeDepth {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Depth = Input { Value = 4, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 10.15 } },
+				},
+				BrightnessContrast1_2 = BrightnessContrast {
+					CtrlWShown = false,
+					Inputs = {
+						Input = Input {
+							SourceOp = "Transform1_2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 109.15 } },
+				},
+				Transform1_2 = Transform {
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input { Value = { 0, 0.5 }, },
+						Edges = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "ChangeDepth1_2",
+							Source = "Output",
+						},
+						EffectMask = Input {
+							SourceOp = "Rectangle1_2",
+							Source = "Mask",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 76.15 } },
+				},
+				Transform1_3 = Transform {
+					CtrlWShown = false,
+					Inputs = {
+						Center = Input { Value = { 0.5, 0 }, },
+						Edges = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "BrightnessContrast1_2",
+							Source = "Output",
+						},
+						EffectMask = Input {
+							SourceOp = "Rectangle1_3",
+							Source = "Mask",
+						}
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 175.15 } },
+				},
+				frequency_1 = Blur {
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						XBlurSize = Input { Value = 32, },
+						ClippingMode = Input { Value = FuID { "None" }, },
+						Input = Input {
+							SourceOp = "Transform1_3",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -165, 241.15 } },
+				},
+				ChannelBooleans1_3 = ChannelBoolean {
+					CtrlWShown = false,
+					Inputs = {
+						Operation = Input { Value = 7, },
+						Background = Input {
+							SourceOp = "Transform1_3",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "frequency_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 241.15 } },
+				},
+				Blur2_2 = Blur {
+					CtrlWShown = false,
+					Inputs = {
+						XBlurSize = Input { Value = 200, },
+						Input = Input {
+							SourceOp = "Transform1_3",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -275, 241.15 } },
+				},
+				Dissolve1_2 = Dissolve {
+					Transitions = {
+						[0] = "DFTDissolve"
+					},
+					CtrlWShown = false,
+					Inputs = {
+						Mix = Input { Value = 0, },
+						Background = Input {
+							SourceOp = "Transform1_3",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Merge2_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 275, 274.15 } },
+				},
+				BrightnessContrast3_1 = BrightnessContrast {
+					CtrlWShown = false,
+					Inputs = {
+						Saturation = Input { Value = 0, },
+						ClipBlack = Input { Value = 1, },
+						ClipWhite = Input { Value = 1, },
+						Input = Input {
+							SourceOp = "Blur2_2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -275, 274.15 } },
+				},
+				Merge2_1 = Merge {
+					CtrlWShown = false,
+					Inputs = {
+						Background = Input {
+							SourceOp = "ChannelBooleans2_2",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Transform1_3",
+							Source = "Output",
+						},
+						ApplyMode = Input { Value = FuID { "Color" }, },
+						PerformDepthMerge = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 110, 274.15 } },
+				},
+				ChannelBooleans2_2 = ChannelBoolean {
+					CtrlWShown = false,
+					Inputs = {
+						Operation = Input { Value = 6, },
+						Background = Input {
+							SourceOp = "ChannelBooleans1_3",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "BrightnessContrast3_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -55, 274.15 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "stx_tileTexture"
+}
