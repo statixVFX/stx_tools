@@ -14,11 +14,11 @@ stx_highpass      - Highpass filter, for easy tracking and finding edges. <br>
 stx_loopzilla     - Soft looper for clips. Makes looping elements much easier. <br>
 stx_pMatte        - Create mattes from World space position, sphere, cube or noise. Can be daisy-chained for complex shapes. <br>
 <p align="left">
-  <img src="images/pmatte.png"/>
+  <img src="images/pmatte2.png"/>
 </p>
 stx_slopeAndDot   - Figures out the slope/derivative of the incoming image and outputs it in RG and the dot product in B. <br>
 <p align="left">
-  <img src="images/slope.gif"/>
+  <img src="images/slope2.png"/>
 </p>
 stx_strangeLoop   - Can create infinite looping / displacing effect. <br>
 <p align="left">
