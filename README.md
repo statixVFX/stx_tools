@@ -5,7 +5,7 @@ VFX Tools, mostly Fusion related. Some Houdini, Blender and Shell related.
 ## Fusion Macros 
 stx_deflicker     - Simple deflicker for global flickering in screen based on reference frame. <br>
 <p align="left">
-  <img src="images/deflicker.png"/>
+  <img src="images/deflicker.gif"/>
 </p>
 stx_highpass      - Highpass filter, for easy tracking and finding edges. <br>
 <p align="left">
