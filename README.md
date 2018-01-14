@@ -18,7 +18,7 @@ stx_pMatte        - Create mattes from World space position, sphere, cube or noi
 </p>
 stx_slopeAndDot   - Figures out the slope/derivative of the incoming image and outputs it in RG and the dot product in B. <br>
 <p align="left">
-  <img src="images/slope2.png"/>
+  <img src="images/slope3.png"/>
 </p>
 stx_strangeLoop   - Can create infinite looping / displacing effect. <br>
 <p align="left">
