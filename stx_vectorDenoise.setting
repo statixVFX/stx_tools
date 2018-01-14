@@ -1,7 +1,6 @@
 {
 	Tools = ordered() {
-		stx_vectorDenoise_1 = GroupOperator {
-			CtrlWZoom = false,
+		stx_vectorDenoise = GroupOperator {
 			NameSet = true,
 			Inputs = ordered() {
 				Input3 = Input { Value = 8, },
@@ -29,16 +28,15 @@
 				}
 			},
 			ViewInfo = GroupInfo {
-				Pos = { 347.154, -33.0491 },
+				Pos = { 1431.5, 327.707 },
 				Flags = {
-					AllowPan = false,
 					ConnectedSnap = true,
 					PipesAlways = true,
 					AutoSnap = true,
 					FullIndicator = true,
 					RemoveRouters = true
 				},
-				Size = { 786, 1118.79, 393, 22 },
+				Size = { 786, 1117.12, 393, 20.3298 },
 				Direction = "Vertical",
 				PipeStyle = "Direct",
 				Scale = 1,
@@ -46,7 +44,6 @@
 			},
 			Tools = ordered() {
 				ChannelBooleans7_10 = ChannelBoolean {
-					CtrlWShown = false,
 					Inputs = {
 						ToRed = Input { Value = 31, },
 						ToGreen = Input { Value = 32, },
@@ -59,15 +56,14 @@
 					ViewInfo = OperatorInfo { Pos = { -275, 400.586 } },
 				},
 				Displace3_10 = Displace {
-					CtrlWShown = false,
 					Inputs = {
 						Type = Input { Value = 1, },
 						XRefraction = Input {
-							Value = 0.000520833333333333,
+							Value = 0.00104166666666667,
 							Expression = "1/self.Input.Width",
 						},
 						YRefraction = Input {
-							Value = 0.00104166666666667,
+							Value = 0.00185185185185185,
 							Expression = "1/self.Input.Height",
 						},
 						Input = Input {
@@ -79,12 +75,11 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { -110, 433.586 } },
+					ViewInfo = OperatorInfo { Pos = { -110, 435.702 } },
 				},
 				TimeSpeed2_10 = TimeSpeed {
-					CtrlWShown = false,
 					Inputs = {
-						Delay = Input { Value = 1, },
+						Delay = Input { Value = -1, },
 						InterpolateBetweenFrames = Input { Value = 0, },
 						SampleSpread = Input { Disabled = true, },
 						Input = Input {
@@ -125,30 +120,30 @@
 					ViewInfo = OperatorInfo { Pos = { -330, 598.591 } },
 				},
 				ui_5 = Custom {
-					CtrlWShown = false,
 					NameSet = true,
 					Inputs = {
 						NewControl = Input { Value = 1, },
 						LUTIn1 = Input {
-							SourceOp = "ui_1LUTIn1_4",
+							SourceOp = "ui_5LUTIn1",
 							Source = "Value",
 						},
 						LUTIn2 = Input {
-							SourceOp = "ui_1LUTIn2_4",
+							SourceOp = "ui_5LUTIn2",
 							Source = "Value",
 						},
 						LUTIn3 = Input {
-							SourceOp = "ui_1LUTIn3_4",
+							SourceOp = "ui_5LUTIn3",
 							Source = "Value",
 						},
 						LUTIn4 = Input {
-							SourceOp = "ui_1LUTIn4_4",
+							SourceOp = "ui_5LUTIn4",
 							Source = "Value",
 						},
+						method = Input { Value = 1, },
 						rankingBlend = Input { Value = 1, },
 						vectorLineup = Input { Value = 1, },
 					},
-					ViewInfo = OperatorInfo { Pos = { 10.61, 87.092 } },
+					ViewInfo = OperatorInfo { Pos = { 10.61, 86.092 } },
 					UserControls = ordered() {
 						method = {
 							{ CCS_AddString = "median" },
@@ -205,7 +200,7 @@
 						}
 					}
 				},
-				ui_1LUTIn1_4 = LUTBezier {
+				ui_5LUTIn1 = LUTBezier {
 					KeyColorSplines = {
 						[0] = {
 							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
@@ -214,8 +209,9 @@
 					},
 					SplineColor = { Red = 204, Green = 0, Blue = 0 },
 					CtrlWShown = false,
+					NameSet = true,
 				},
-				ui_1LUTIn2_4 = LUTBezier {
+				ui_5LUTIn2 = LUTBezier {
 					KeyColorSplines = {
 						[0] = {
 							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
@@ -224,8 +220,9 @@
 					},
 					SplineColor = { Red = 0, Green = 204, Blue = 0 },
 					CtrlWShown = false,
+					NameSet = true,
 				},
-				ui_1LUTIn3_4 = LUTBezier {
+				ui_5LUTIn3 = LUTBezier {
 					KeyColorSplines = {
 						[0] = {
 							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
@@ -234,8 +231,9 @@
 					},
 					SplineColor = { Red = 0, Green = 0, Blue = 204 },
 					CtrlWShown = false,
+					NameSet = true,
 				},
-				ui_1LUTIn4_4 = LUTBezier {
+				ui_5LUTIn4 = LUTBezier {
 					KeyColorSplines = {
 						[0] = {
 							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
@@ -244,6 +242,7 @@
 					},
 					SplineColor = { Red = 204, Green = 204, Blue = 204 },
 					CtrlWShown = false,
+					NameSet = true,
 				},
 				ChannelBooleans9_2_6 = ChannelBoolean {
 					CtrlWShown = false,
@@ -308,7 +307,6 @@
 					ViewInfo = OperatorInfo { Pos = { 220, 796.591 } },
 				},
 				ChannelBooleans7_11 = ChannelBoolean {
-					CtrlWShown = false,
 					Inputs = {
 						ToRed = Input { Value = 31, },
 						ToGreen = Input { Value = 32, },
@@ -318,7 +316,7 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 220, 400.586 } },
+					ViewInfo = OperatorInfo { Pos = { 186.456, 400.586 } },
 				},
 				BrightnessContrast10_5 = BrightnessContrast {
 					CtrlWShown = false,
@@ -335,7 +333,6 @@
 					Transitions = {
 						[0] = "DFTDissolve"
 					},
-					CtrlWShown = false,
 					Inputs = {
 						Mix = Input { Expression = "ui_5.method", },
 						Background = Input {
@@ -347,19 +344,18 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { -110, 928.591 } },
+					ViewInfo = OperatorInfo { Pos = { -167.061, 883.202 } },
 				},
 				Displace3_11 = Displace {
-					CtrlWShown = false,
 					Inputs = {
 						Type = Input { Value = 1, },
 						XRefraction = Input {
-							Value = 0.000520833333333333,
-							Expression = "1/self.Input.Width",
+							Value = -0.00104166666666667,
+							Expression = "-(1/self.Input.Width)",
 						},
 						YRefraction = Input {
-							Value = 0.00104166666666667,
-							Expression = "1/self.Input.Height",
+							Value = -0.00185185185185185,
+							Expression = "-(1/self.Input.Height)",
 						},
 						Input = Input {
 							SourceOp = "TimeSpeed2_11",
@@ -370,12 +366,11 @@
 							Source = "Output",
 						},
 					},
-					ViewInfo = OperatorInfo { Pos = { 330, 433.586 } },
+					ViewInfo = OperatorInfo { Pos = { 330, 436.859 } },
 				},
 				TimeSpeed2_11 = TimeSpeed {
-					CtrlWShown = false,
 					Inputs = {
-						Delay = Input { Value = -1, },
+						Delay = Input { Value = 1, },
 						InterpolateBetweenFrames = Input { Value = 0, },
 						SampleSpread = Input { Disabled = true, },
 						Input = Input {
@@ -407,5 +402,5 @@
 			},
 		}
 	},
-	ActiveTool = "stx_vectorDenoise_1"
+	ActiveTool = "stx_vectorDenoise"
 }
