@@ -1,6 +1,6 @@
 {
 	Tools = ordered() {
-		stx_pMatte1 = MacroOperator {
+		stx_pMatte = MacroOperator {
 			CtrlWZoom = false,
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
@@ -400,5 +400,5 @@
 			},
 		}
 	},
-	ActiveTool = "stx_pMatte1"
+	ActiveTool = "stx_pMatte"
 }
