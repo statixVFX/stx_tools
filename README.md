@@ -27,7 +27,7 @@ stx_tileTexture   - Simple texture tiler with soft blend and optional removal of
 <p align="left">
   <img src="images/texturetiler.png"/>
 </p>
-stx_vectorDenoise - Simple Temporal median or average of 3 frames to produce a clean image based on motion vectors <br>
+stx_vectorDenoise - Simple temporal median or average of 3 frames to produce a clean image based on motion vectors <br>
 <p align="left">
   <img src="images/vectorDenoise.gif"/>
 </p>
