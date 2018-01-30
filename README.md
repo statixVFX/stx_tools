@@ -3,6 +3,14 @@
 VFX Tools, mostly Fusion related. Some Houdini, Blender and Shell related.
 
 ## Fusion Macros 
+stx_patchPal     - Warps patches or stabilizes based on motion vectors. SLOW and requires the FrameAverage.Fuse . <br>
+<p align="left">
+
+  <img src="images/stx_patchPal_original.gif"/>
+  <img src="images/stx_patchPal_warped.gif"/>
+  <img src="images/stx_patchPal_stabilized.gif"/> <br>
+    Original, Warped patch and stabilized <br>
+</p>
 stx_deflicker     - Simple deflicker for global flicker removal. <br>
 <p align="left">
   <img src="images/deflicker.gif"/>
