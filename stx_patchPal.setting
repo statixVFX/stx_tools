@@ -1,0 +1,534 @@
+{
+	Tools = ordered() {
+		stx_patchPal = GroupOperator {
+			CtrlWZoom = false,
+			Inputs = ordered() {
+				Input1 = InstanceInput {
+					SourceOp = "dx_1",
+					Source = "refFrame",
+					Name = "Reference Frame",
+					Default = 1010,
+				},
+				Input2 = InstanceInput {
+					SourceOp = "dx_1",
+					Source = "output",
+					Name = "Output",
+					Default = 0,
+				},
+				Input3 = InstanceInput {
+					SourceOp = "Blur1_1",
+					Source = "XBlurSize",
+					Name = "Filter Motion Vectors",
+					Default = 0,
+				},
+				Input4 = InstanceInput {
+					SourceOp = "OpticalFlow1_1",
+					Source = "Method2.Proxy",
+					Default = 2,
+				},
+				Input5 = InstanceInput {
+					SourceOp = "OpticalFlow1_1",
+					Source = "Method2.Smoothness",
+					Default = 40,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "OpticalFlow1_1",
+					Source = "Method2.Edges",
+					Name = "Loose",
+					Default = 5,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "OpticalFlow1_1",
+					Source = "Method2.MatchWeight",
+					Name = "Match Color",
+					Default = 0.75,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "OpticalFlow1_1",
+					Source = "Method2.MismatchPenalty",
+					Name = "Quadratic",
+					Default = 2.00000000970724,
+				},
+				Input9 = InstanceInput {
+					SourceOp = "OpticalFlow1_1",
+					Source = "Method2.NumWarps",
+					Default = 8,
+				},
+				Input10 = InstanceInput {
+					SourceOp = "OpticalFlow1_1",
+					Source = "Method2.NumIters",
+					Default = 28,
+				},
+				Input11 = InstanceInput {
+					SourceOp = "OpticalFlow1_1",
+					Source = "Method2.Filtering",
+					Default = 1,
+				},
+				Input12 = InstanceInput {
+					SourceOp = "OpticalFlow1_1",
+					Source = "Method2.UseOpenCL",
+					Default = 1,
+				},
+				MainInput1 = InstanceInput {
+					SourceOp = "ChangeDepth1_1",
+					Source = "Input",
+					Name = "BG",
+				},
+				MainInput2 = InstanceInput {
+					SourceOp = "Displace1_3",
+					Source = "Input",
+					Name = "Patch2Warp",
+				}
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "Dissolve1_1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 1762.22, 319.954 } },
+			Tools = ordered() {
+				dx_1 = Dissolve {
+					Transitions = {
+						[0] = "DFTDissolve"
+					},
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						Mix = Input {
+							Value = 0,
+							Expression = "iif(refFrame>time,1,0)",
+						},
+						Background = Input {
+							SourceOp = "FrameAverage1_3",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "FrameAverage1_2",
+							Source = "Output",
+						},
+						refFrame = Input { Value = 1010, },
+						output = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -23.9565, 314.991 } },
+					UserControls = ordered() {
+						refFrame = {
+							INP_Integer = true,
+							INPID_InputControl = "SliderControl",
+							LINKID_DataType = "Number",
+							IC_Steps = 1,
+							INP_MinScale = 0,
+							INP_MaxScale = 1000,
+							LINKS_Name = "refFrame",
+						},
+						output = {
+							{ CCS_AddString = "Stabilized BG" },
+							{ CCS_AddString = "Warped Patch" },
+							INP_Integer = false,
+							LINKID_DataType = "Number",
+							CC_LabelPosition = "Horizontal",
+							INPID_InputControl = "ComboControl",
+							LINKS_Name = "output",
+						}
+					}
+				},
+				Blur1_1 = Blur {
+					CtrlWShown = false,
+					Inputs = {
+						XBlurSize = Input { Value = 0, },
+						Input = Input {
+							SourceOp = "viewMotionVectors_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -112.937, 163.174 } },
+				},
+				OpticalFlow1_1 = Dimension.OpticalFlow {
+					CtrlWShown = false,
+					Inputs = {
+						Input = Input {
+							SourceOp = "ChangeDepth1_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -112.937, 74.74 } },
+				},
+				viewMotionVectors_1 = ChannelBoolean {
+					CtrlWShown = false,
+					Inputs = {
+						ToRed = Input { Value = 31, },
+						ToGreen = Input { Value = 32, },
+						ToBlue = Input { Value = 33, },
+						ToAlpha = Input { Value = 34, },
+						Background = Input {
+							SourceOp = "OpticalFlow1_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -112.937, 134.632 } },
+				},
+				ChangeDepth1_1 = ChangeDepth {
+					CtrlWZoom = false,
+					CtrlWShown = false,
+					Inputs = {
+						Depth = Input { Value = 3, },
+					},
+					ViewInfo = OperatorInfo { Pos = { -112.937, 10.15 } },
+				},
+				clamp1_1 = MacroOperator {
+					CtrlWShown = false,
+					Inputs = ordered() {
+						MainInput1 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "Image1",
+						},
+						Input2 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "NumberIn1",
+							Name = "Clamp High",
+							Default = 1,
+						},
+						Input3 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "NumberIn2",
+							Name = "Clamp Low",
+							Default = 0,
+						},
+						Input4 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "Blend",
+							Default = 1,
+						},
+						Input5 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "ProcessWhenBlendIs00",
+							Default = 0,
+						},
+						Input6 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "ProcessRed",
+							Name = "Red",
+							Default = 1,
+						},
+						Input7 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "ProcessGreen",
+							Name = "Green",
+							Default = 1,
+						},
+						Input8 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "ProcessBlue",
+							Name = "Blue",
+							Default = 1,
+						},
+						Input9 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "ProcessAlpha",
+							Name = "Alpha",
+							Default = 1,
+						},
+						Input10 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "ApplyMaskInverted",
+							Default = 0,
+						},
+						Input11 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "MultiplyByMask",
+							Default = 0,
+						},
+						Input12 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "FitMask",
+						},
+						Input13 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "MaskChannel",
+							Default = 3,
+						},
+						Input14 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "MaskHigh",
+							ControlGroup = 15,
+							Default = 1,
+						},
+						Input15 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "MaskLow",
+							ControlGroup = 15,
+							Default = 0,
+						},
+						Input16 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "MaskClipBlack",
+							Default = 1,
+						},
+						Input17 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "MaskClipWhite",
+							Default = 1,
+						},
+						Input18 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "UseObject",
+							Default = 0,
+						},
+						Input19 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "UseMaterial",
+							Default = 0,
+						},
+						Input20 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "CorrectEdges",
+						},
+						Input21 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "ObjectID",
+							Name = "Object / Material",
+							ControlGroup = 21,
+							Default = 0,
+						},
+						Input22 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "MaterialID",
+							Name = "Object / Material",
+							ControlGroup = 21,
+							Default = 0,
+						},
+						Input23 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "MotionBlur",
+							Default = 0,
+						},
+						Input24 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "Quality",
+							Default = 2,
+						},
+						Input25 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "ShutterAngle",
+							Default = 180,
+						},
+						Input26 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "CenterBias",
+							Default = 0,
+						},
+						Input27 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "SampleSpread",
+							Default = 1,
+						},
+						Input1 = InstanceInput {
+							SourceOp = "CustomTool1_1",
+							Source = "EffectMask",
+						}
+					},
+					Outputs = {
+						MainOutput1 = InstanceOutput {
+							SourceOp = "CustomTool1_1",
+							Source = "Output",
+						}
+					},
+					ViewInfo = GroupInfo { Pos = { -112.937, 192.74 } },
+					Tools = ordered() {
+						CustomTool1_1 = Custom {
+							CtrlWZoom = false,
+							CtrlWShown = false,
+							Inputs = {
+								NumberIn1 = Input { Value = 1000, },
+								NumberIn2 = Input { Value = -1000, },
+								LUTIn1 = Input {
+									SourceOp = "CustomTool1LUTIn1_1",
+									Source = "Value",
+								},
+								LUTIn2 = Input {
+									SourceOp = "CustomTool1LUTIn2_1",
+									Source = "Value",
+								},
+								LUTIn3 = Input {
+									SourceOp = "CustomTool1LUTIn3_1",
+									Source = "Value",
+								},
+								LUTIn4 = Input {
+									SourceOp = "CustomTool1LUTIn4_1",
+									Source = "Value",
+								},
+								RedExpression = Input { Value = "if(r1>n1,n1,if(r1<n2,n2,r1))", },
+								GreenExpression = Input { Value = "if(g1>n1,n1,if(g1<n2,n2,g1))", },
+								BlueExpression = Input { Value = "if(b1>n1,n1,if(b1<n2,n2,b1))", },
+								AlphaExpression = Input { Value = "if(a1>n1,n1,if(a1<n2,n2,a1))", },
+								Image1 = Input {
+									SourceOp = "Blur1_1",
+									Source = "Output",
+								},
+							},
+							ViewInfo = OperatorInfo { Pos = { 0, 10.15 } },
+						},
+						CustomTool1LUTIn1_1 = LUTBezier {
+							KeyColorSplines = {
+								[0] = {
+									[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+									[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+								}
+							},
+							SplineColor = { Red = 204, Green = 0, Blue = 0 },
+							CtrlWShown = false,
+						},
+						CustomTool1LUTIn2_1 = LUTBezier {
+							KeyColorSplines = {
+								[0] = {
+									[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+									[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+								}
+							},
+							SplineColor = { Red = 0, Green = 204, Blue = 0 },
+							CtrlWShown = false,
+						},
+						CustomTool1LUTIn3_1 = LUTBezier {
+							KeyColorSplines = {
+								[0] = {
+									[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+									[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+								}
+							},
+							SplineColor = { Red = 0, Green = 0, Blue = 204 },
+							CtrlWShown = false,
+						},
+						CustomTool1LUTIn4_1 = LUTBezier {
+							KeyColorSplines = {
+								[0] = {
+									[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+									[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+								}
+							},
+							SplineColor = { Red = 204, Green = 204, Blue = 204 },
+							CtrlWShown = false,
+						}
+					},
+				},
+				FrameAverage1_2 = Fuse.FrameAverage {
+					CtrlWShown = false,
+					Inputs = {
+						SampleDirection = Input { Value = 2, },
+						MissingFrames = Input { Value = 1, },
+						Frames = Input {
+							Value = 1,
+							Expression = "-(time-dx_1.refFrame)",
+						},
+						Input = Input {
+							SourceOp = "CustomTool1_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -139.207, 265.331 } },
+				},
+				FrameAverage1_3 = Fuse.FrameAverage {
+					CtrlWShown = false,
+					Inputs = {
+						MissingFrames = Input { Value = 1, },
+						Frames = Input {
+							Value = 70,
+							Expression = "time-dx_1.refFrame",
+						},
+						Input = Input {
+							SourceOp = "CustomTool1_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 25.0935, 252.784 } },
+				},
+				scaleFromAverage_1 = BrightnessContrast {
+					CtrlWShown = false,
+					NameSet = true,
+					Inputs = {
+						Gain = Input {
+							Value = -70,
+							Expression = "-(time-dx_1.refFrame)",
+						},
+						Input = Input {
+							SourceOp = "dx_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -23.9565, 355.459 } },
+				},
+				BrightnessContrast2_1 = BrightnessContrast {
+					CtrlWShown = false,
+					Inputs = {
+						Gain = Input { Value = -1, },
+						Input = Input {
+							SourceOp = "scaleFromAverage_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -168.673, 404.639 } },
+				},
+				Displace1_2 = Displace {
+					CtrlWShown = false,
+					Inputs = {
+						Type = Input { Value = 1, },
+						XRefraction = Input {
+							Value = 0.00078125,
+							Expression = "1/self.Input.Width",
+						},
+						YRefraction = Input {
+							Value = 0.00078125,
+							Expression = "1/self.Input.Width",
+						},
+						Input = Input {
+							SourceOp = "ChangeDepth1_1",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "BrightnessContrast2_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -298.804, 437.618 } },
+				},
+				Dissolve1_1 = Dissolve {
+					Transitions = {
+						[0] = "DFTDissolve"
+					},
+					CtrlWShown = false,
+					Inputs = {
+						Mix = Input { Expression = "dx_1.output", },
+						Background = Input {
+							SourceOp = "Displace1_2",
+							Source = "Output",
+						},
+						Foreground = Input {
+							SourceOp = "Displace1_3",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { -72.7445, 605.673 } },
+				},
+				Displace1_3 = Displace {
+					CtrlWShown = false,
+					Inputs = {
+						Type = Input { Value = 1, },
+						XRefraction = Input {
+							Value = 0.00078125,
+							Expression = "1/self.Input.Width",
+						},
+						YRefraction = Input {
+							Value = 0.00078125,
+							Expression = "1/self.Input.Width",
+						},
+						Foreground = Input {
+							SourceOp = "scaleFromAverage_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 298.803, 417.638 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "stx_patchPal"
+}
