@@ -3,6 +3,11 @@
 VFX Tools, mostly Fusion related. Some Houdini, Blender and Shell related.
 
 ## Fusion Macros 
+stx_metaballs    - 4 2d Metaballs with curve to change shading profile. <br>
+<p align="left">
+  <img src="images/blob.gif"/>
+</p>
+
 stx_patchPal     - Warps patches or stabilizes based on motion vectors. SLOW and requires the FrameAverage.Fuse . <br>
 <p align="left">
 
