@@ -1,0 +1,156 @@
+{
+	Tools = ordered() {
+		stx_metaballs = MacroOperator {
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "CustomTool2",
+					Source = "Image1",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "CustomTool2",
+					Source = "PointIn1",
+				},
+				Input2 = InstanceInput {
+					SourceOp = "CustomTool2",
+					Source = "PointIn2",
+				},
+				Input3 = InstanceInput {
+					SourceOp = "CustomTool2",
+					Source = "PointIn3",
+				},
+				Input4 = InstanceInput {
+					SourceOp = "CustomTool2",
+					Source = "PointIn4",
+				},
+				Input5 = InstanceInput {
+					SourceOp = "CustomTool2",
+					Source = "NumberIn2",
+					Name = "Size",
+					Default = 1.116,
+				},
+				Input6 = InstanceInput {
+					SourceOp = "CustomTool2",
+					Source = "NumberIn3",
+					Name = "Falloff",
+					Default = 16,
+				},
+				Input7 = InstanceInput {
+					SourceOp = "CustomTool2",
+					Source = "EditLUTIn1",
+					Name = "LUT In 1",
+					Default = 1,
+				},
+				Input8 = InstanceInput {
+					SourceOp = "CustomTool2",
+					Source = "LUTIn1",
+					ControlGroup = 9,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "CustomTool2",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				CustomTool2 = Custom {
+					CtrlWZoom = false,
+					Inputs = {
+						PointIn1 = Input { Value = { 0.381828254847645, 0.198703601108033 }, },
+						PointIn2 = Input { Value = { 0.195290858725762, 0.721606648199446 }, },
+						PointIn3 = Input { Value = { 0.764880380505684, 0.701763963480128 }, },
+						PointIn4 = Input { Value = { 0.642910399377593, 0.366880010932945 }, },
+						NumberIn1 = Input { Value = 1.008, },
+						NumberIn2 = Input { Value = 1.116, },
+						NumberIn3 = Input { Value = 16, },
+						LUTControlsNest = Input { Value = 1, },
+						EditLUTIn2 = Input { Value = 0, },
+						EditLUTIn3 = Input { Value = 0, },
+						EditLUTIn4 = Input { Value = 0, },
+						LUTIn1 = Input {
+							SourceOp = "CustomTool2LUTIn1",
+							Source = "Value",
+						},
+						LUTIn2 = Input {
+							SourceOp = "CustomTool2LUTIn2",
+							Source = "Value",
+						},
+						LUTIn3 = Input {
+							SourceOp = "CustomTool2LUTIn3",
+							Source = "Value",
+						},
+						LUTIn4 = Input {
+							SourceOp = "CustomTool2LUTIn4",
+							Source = "Value",
+						},
+						Intermediate1 = Input { Value = "((1-sqrt(((x-p1x)^2) + (((y-p1y)/(w/h))^2))) * n2) ^ n3", },
+						Intermediate2 = Input { Value = "((1-sqrt(((x-p2x)^2) + (((y-p2y)/(w/h))^2))) * n2) ^ n3", },
+						Intermediate3 = Input { Value = "((1-sqrt(((x-p3x)^2) + (((y-p3y)/(w/h))^2))) * n2) ^ n3", },
+						Intermediate4 = Input { Value = "((1-sqrt(((x-p4x)^2) + (((y-p4y)/(w/h))^2))) * n2) ^ n3", },
+						RedExpression = Input { Value = "r1+getlut1(((i1+i2+i3+i4)/3) )", },
+						GreenExpression = Input { Value = "g1+getlut1(((i1+i2+i3+i4)/3) )", },
+						BlueExpression = Input { Value = "b1+getlut1(((i1+i2+i3+i4)/3) )", },
+						AlphaExpression = Input { Value = "a1+getlut1(((i1+i2+i3+i4)/3) )\n", },
+						ShowNumber1 = Input { Value = 0, },
+						NameforNumber2 = Input { Value = "size", },
+						NameforNumber3 = Input { Value = "falloff", },
+						ShowNumber4 = Input { Value = 0, },
+						ShowNumber5 = Input { Value = 0, },
+						ShowNumber6 = Input { Value = 0, },
+						ShowNumber7 = Input { Value = 0, },
+						ShowNumber8 = Input { Value = 0, },
+						PointControls = Input { Value = 1, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 735, 208 } },
+				},
+				CustomTool2LUTIn1 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0.245421245421245] = { 0, RH = { 0.334101785743047, 0.00100529282840326 } },
+							[0.511462866386651] = { 0.00301587848520977, LH = { 0.422782326064849, 0.00201058565680651 }, RH = { 0.51512063181114, 0.330575461930655 }, Flags = { Linear = true } },
+							[0.522436162660118] = { 0.985694628821546, LH = { 0.518778397235629, 0.658135045376101 }, RH = { 0.681624108440079, 0.990463085881031 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.840812054220039, 0.995231542940515 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 0, Blue = 0 },
+					NameSet = true,
+				},
+				CustomTool2LUTIn2 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0.245421245421245] = { 0, RH = { 0.334101785743047, 0.00100529282840326 } },
+							[0.511462866386651] = { 0.00301587848520977, LH = { 0.422782326064849, 0.00201058565680651 }, RH = { 0.520040681011632, 0.3144063077018 }, Flags = { Linear = true } },
+							[0.537196310261594] = { 0.937187166134979, LH = { 0.528618495636613, 0.625796736918389 }, RH = { 0.691464206841063, 0.958124777423319 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.845732103420531, 0.97906238871166 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 204, Blue = 0 },
+				},
+				CustomTool2LUTIn3 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0.245421245421245] = { 0, RH = { 0.334101785743047, 0.00100529282840326 } },
+							[0.511462866386651] = { 0.00301587848520977, LH = { 0.422782326064849, 0.00201058565680651 }, RH = { 0.520040681011632, 0.3144063077018 }, Flags = { Linear = true } },
+							[0.537196310261594] = { 0.937187166134979, LH = { 0.528618495636613, 0.625796736918389 }, RH = { 0.691464206841063, 0.958124777423319 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.845732103420531, 0.97906238871166 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 0, Blue = 204 },
+				},
+				CustomTool2LUTIn4 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0.245421245421245] = { 0, RH = { 0.334101785743047, 0.00100529282840326 } },
+							[0.511462866386651] = { 0.00301587848520977, LH = { 0.422782326064849, 0.00201058565680651 }, RH = { 0.520040681011632, 0.3144063077018 }, Flags = { Linear = true } },
+							[0.537196310261594] = { 0.937187166134979, LH = { 0.528618495636613, 0.625796736918389 }, RH = { 0.691464206841063, 0.958124777423319 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.845732103420531, 0.97906238871166 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 204, Blue = 204 },
+				}
+			},
+		}
+	},
+	ActiveTool = "stx_metaballs"
+}
