@@ -1,6 +1,9 @@
 {
 	Tools = ordered() {
 		stx_metaballs = MacroOperator {
+			CustomData = {
+				HelpPage = "https://github.com/statixVFX/stx_tools",
+			},
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "CustomTool2",

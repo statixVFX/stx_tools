@@ -2,6 +2,9 @@
 	Tools = ordered() {
 		stx_deflicker_1 = GroupOperator {
 			CtrlWZoom = false,
+			CustomData = {
+				HelpPage = "https://github.com/statixVFX/stx_tools",
+			},
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "PipeRouter1_1",

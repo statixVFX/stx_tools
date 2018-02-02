@@ -2,6 +2,9 @@
 	Tools = ordered() {
 		stx_vectorDenoise = GroupOperator {
 			NameSet = true,
+			CustomData = {
+				HelpPage = "https://github.com/statixVFX/stx_tools",
+			},
 			Inputs = ordered() {
 				Input3 = Input { Value = 8, },
 				Input4 = Input { Value = 1, },

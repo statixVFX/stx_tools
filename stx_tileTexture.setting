@@ -1,8 +1,11 @@
 {
 	Tools = ordered() {
-		stx_tileTexture = MacroOperator {
+		stx_tileTexture = GroupOperator {
 			CtrlWZoom = false,
 			NameSet = true,
+			CustomData = {
+				HelpPage = "https://github.com/statixVFX/stx_tools",
+			},
 			Inputs = ordered() {
 				Input1 = InstanceInput {
 					SourceOp = "Rectangle1_2",

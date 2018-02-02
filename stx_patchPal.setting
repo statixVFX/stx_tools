@@ -2,6 +2,9 @@
 	Tools = ordered() {
 		stx_patchPal = GroupOperator {
 			CtrlWZoom = false,
+			CustomData = {
+				HelpPage = "https://github.com/statixVFX/stx_tools",
+			},
 			Inputs = ordered() {
 				Input1 = InstanceInput {
 					SourceOp = "dx_1",
