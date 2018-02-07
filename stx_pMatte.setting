@@ -1,7 +1,10 @@
 {
 	Tools = ordered() {
-		stx_pMatte = MacroOperator {
+		stx_pMatte = GroupOperator {
 			CtrlWZoom = false,
+			CustomData = {
+				HelpPage = "https://github.com/statixVFX/stx_tools",
+			},
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "BrightnessContrast1_3_3",

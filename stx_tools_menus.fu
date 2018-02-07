@@ -1,0 +1,23 @@
+--[[--
+stx_tools Menu Entries
+v1.0 2018-01-31
+--]]--
+{
+	Menus
+	{
+		Target = "ChildFrame",
+
+		After "Tools\\Filter\\Rank Filter"
+		{
+			"AddSetting{Name = 'stx_deflicker', filename = 'Macros:/Filter/stx_tools/stx_deflicker.setting'}",
+			"AddSetting{Name = 'stx_highPass', filename = 'Macros:/Filter/stx_tools/stx_highPass.setting'}",
+			"AddSetting{Name = 'stx_loopzilla', filename = 'Macros:/Filter/stx_tools/stx_loopzilla.setting'}",
+			"AddSetting{Name = 'stx_metaballs', filename = 'Macros:/Filter/stx_tools/stx_metaballs.setting'}",
+			"AddSetting{Name = 'stx_patchPal', filename = 'Macros:/Filter/stx_tools/stx_patchPal.setting'}",
+			"AddSetting{Name = 'stx_pMatte', filename = 'Macros:/Filter/stx_tools/stx_pMatte.setting'}",
+			"AddSetting{Name = 'stx_slopeAndDot', filename = 'Macros:/Filter/stx_tools/stx_slopeAndDot.setting'}",
+			"AddSetting{Name = 'stx_strangeLoop', filename = 'Macros:/Filter/stx_tools/stx_strangeLoop.setting'}",
+			"AddSetting{Name = 'stx_vectorDenoise', filename = 'Macros:/Filter/stx_tools/stx_vectorDenoise.setting'}",
+		},
+	},
+}

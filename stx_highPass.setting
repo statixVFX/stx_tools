@@ -1,6 +1,9 @@
 {
 	Tools = ordered() {
-		stx_highPass = MacroOperator {
+		stx_highPass = GroupOperator {
+			CustomData = {
+				HelpPage = "https://github.com/statixVFX/stx_tools",
+			},
 			Inputs = ordered() {
 				MainInput1 = InstanceInput {
 					SourceOp = "PipeRouter1",

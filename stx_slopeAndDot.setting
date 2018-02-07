@@ -2,6 +2,9 @@
 	Tools = ordered() {
 		stx_slopeAndDot_1 = GroupOperator {
 			CtrlWZoom = false,
+			CustomData = {
+				HelpPage = "https://github.com/statixVFX/stx_tools",
+			},
 			Inputs = ordered() {
 				Input1 = InstanceInput {
 					SourceOp = "BrightnessContrast2_2_1",
