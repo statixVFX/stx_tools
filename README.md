@@ -46,6 +46,8 @@ VFX Tools, mostly Fusion related. Some Houdini, Blender and Shell related.
   <img src="images/texturetiler.png"/>
 </p>
 `stx_loopzilla`     - Soft looper for clips. Makes looping elements much easier. <br>
+`stx_crossProduct`  - Simple crossproduct macro for crossing two vector images. <br>
+
 
 ## Fusion Menus
 
