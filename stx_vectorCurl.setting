@@ -1,0 +1,378 @@
+{
+	Tools = ordered() {
+		stx_vectorCurl = GroupOperator {
+			Inputs = ordered() {
+				MainInput1 = InstanceInput {
+					SourceOp = "ct1",
+					Source = "Image1",
+				},
+				Input1 = InstanceInput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Gain",
+					Default = 1,
+				},
+			},
+			Outputs = {
+				MainOutput1 = InstanceOutput {
+					SourceOp = "BrightnessContrast1",
+					Source = "Output",
+				}
+			},
+			ViewInfo = GroupInfo { Pos = { 0, 0 } },
+			Tools = ordered() {
+				Background1_1 = Background {
+					CustomData = {
+						Settings = {
+							[1] = {
+								Tools = ordered() {
+									Background1 = Background {
+										Inputs = {
+											["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" } },
+											GlobalIn = Input { Value = 1001 },
+											Depth = Input { Value = 3 },
+											GlobalOut = Input { Value = 1100 },
+											Gradient = Input {
+												Value = Gradient {
+													Colors = {
+														[0] = { 0, 0, 0, 1 },
+														[1] = { 1, 1, 1, 1 }
+													}
+												}
+											},
+											Height = Input { Value = 1080 },
+											Width = Input { Value = 1920 }
+										},
+										Name = "Background1",
+										CtrlWZoom = false,
+										ViewInfo = OperatorInfo { Pos = { 550, 82.5 } },
+										CustomData = {
+										}
+									}
+								}
+							},
+							[2] = {
+								Tools = ordered() {
+									Background1 = Background {
+										Inputs = {
+											Type = Input { Value = FuID { "Horizontal" } },
+											TopRightGreen = Input { Value = 1 },
+											Width = Input { Value = 1920 },
+											TopRightRed = Input { Value = 1 },
+											["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" } },
+											GlobalIn = Input { Value = 1001 },
+											Height = Input { Value = 1080 },
+											GlobalOut = Input { Value = 1100 },
+											Gradient = Input {
+												Value = Gradient {
+													Colors = {
+														[0] = { 0, 0, 0, 1 },
+														[1] = { 1, 1, 1, 1 }
+													}
+												}
+											},
+											TopRightBlue = Input { Value = 1 },
+											Depth = Input { Value = 3 }
+										},
+										CtrlWZoom = false,
+										ViewInfo = OperatorInfo { Pos = { 550, 82.5 } },
+										CustomData = {
+										}
+									}
+								}
+							},
+							[3] = {
+								Tools = ordered() {
+									Background1 = Background {
+										Inputs = {
+											BottomRightGreen = Input { Value = 1 },
+											Type = Input { Value = FuID { "Corner" } },
+											TopRightGreen = Input { Value = 1 },
+											Width = Input { Value = 1920 },
+											TopRightRed = Input { Value = 1 },
+											["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" } },
+											GlobalIn = Input { Value = 1001 },
+											Height = Input { Value = 1080 },
+											GlobalOut = Input { Value = 1100 },
+											Gradient = Input {
+												Value = Gradient {
+													Colors = {
+														[0] = { 0, 0, 0, 1 },
+														[1] = { 1, 1, 1, 1 }
+													}
+												}
+											},
+											TopLeftRed = Input { Value = 1 },
+											Depth = Input { Value = 3 }
+										},
+										CtrlWZoom = false,
+										ViewInfo = OperatorInfo { Pos = { 550, 82.5 } },
+										CustomData = {
+										}
+									}
+								}
+							},
+							[4] = {
+								Tools = ordered() {
+									Background1 = Background {
+										Inputs = {
+											BottomRightGreen = Input { Value = 1 },
+											Type = Input { Value = FuID { "Vertical" } },
+											TopLeftRed = Input { Value = 1 },
+											TopRightGreen = Input { Value = 1 },
+											GlobalOut = Input { Value = 1100 },
+											Width = Input { Value = 1920 },
+											TopRightRed = Input { Value = 1 },
+											["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" } },
+											GlobalIn = Input { Value = 1001 },
+											Depth = Input { Value = 3 },
+											Height = Input { Value = 1080 },
+											Gradient = Input {
+												Value = Gradient {
+													Colors = {
+														[0] = { 0, 0, 0, 1 },
+														[1] = { 1, 1, 1, 1 }
+													}
+												}
+											},
+											TopLeftBlue = Input { Value = 1 },
+											TopLeftGreen = Input { Value = 1 }
+										},
+										CtrlWZoom = false,
+										ViewInfo = OperatorInfo { Pos = { 550, 82.5 } },
+										CustomData = {
+										}
+									}
+								}
+							},
+							[5] = {
+								Tools = ordered() {
+									Background1 = Background {
+										Inputs = {
+											BottomRightGreen = Input { Value = 1 },
+											TopRightGreen = Input { Value = 1 },
+											Width = Input { Value = 1920 },
+											TopRightRed = Input { Value = 1 },
+											["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" } },
+											GlobalIn = Input { Value = 1001 },
+											Height = Input { Value = 1080 },
+											GlobalOut = Input { Value = 1100 },
+											Gradient = Input {
+												Value = Gradient {
+													Colors = {
+														[0] = { 0, 0, 0, 1 },
+														[1] = { 1, 1, 1, 1 }
+													}
+												}
+											},
+											TopLeftRed = Input { Value = 1 },
+											Depth = Input { Value = 3 }
+										},
+										CtrlWZoom = false,
+										ViewInfo = OperatorInfo { Pos = { 550, 82.5 } },
+										CustomData = {
+										}
+									}
+								}
+							},
+							[6] = {
+								Tools = ordered() {
+									Background1 = Background {
+										Inputs = {
+											BottomRightGreen = Input { Value = 1 },
+											TopRightGreen = Input { Value = 1 },
+											Width = Input { Value = 1920 },
+											TopRightRed = Input { Value = 1 },
+											["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" } },
+											GlobalIn = Input { Value = 1001 },
+											Depth = Input { Value = 3 },
+											Height = Input { Value = 1080 },
+											Gradient = Input {
+												Value = Gradient {
+													Colors = {
+														[0] = { 0, 0, 0, 1 },
+														[1] = { 1, 1, 1, 1 }
+													}
+												}
+											},
+											TopLeftRed = Input { Value = 1 },
+											GlobalOut = Input { Value = 1100 }
+										},
+										CtrlWZoom = false,
+										ViewInfo = OperatorInfo { Pos = { 605, 49.5 } },
+										CustomData = {
+										}
+									}
+								}
+							}
+						}
+					},
+					Inputs = {
+						GlobalIn = Input { Value = 1001, },
+						GlobalOut = Input { Value = 1200, },
+						Width = Input {
+							Value = 512,
+							Expression = "ct1.Image1.Width",
+						},
+						Height = Input {
+							Value = 512,
+							Expression = "ct1.Image1.Height",
+						},
+						Depth = Input { Value = 3, },
+						["Gamut.SLogVersion"] = Input { Value = FuID { "SLog2" }, },
+						TopLeftBlue = Input { Value = 1, },
+						TopLeftAlpha = Input { Value = 0, },
+					},
+					ViewInfo = OperatorInfo { Pos = { 535.544, -502.945 } },
+				},
+				ct2 = Custom {
+					NameSet = true,
+					Inputs = {
+						LUTIn1 = Input {
+							SourceOp = "ct2LUTIn1",
+							Source = "Value",
+						},
+						LUTIn2 = Input {
+							SourceOp = "ct2LUTIn2",
+							Source = "Value",
+						},
+						LUTIn3 = Input {
+							SourceOp = "ct2LUTIn3",
+							Source = "Value",
+						},
+						LUTIn4 = Input {
+							SourceOp = "ct2LUTIn4",
+							Source = "Value",
+						},
+						RedExpression = Input { Value = "(g1*b2) - (b1*g2)", },
+						GreenExpression = Input { Value = "(b1*r2) - (r1*b2)", },
+						BlueExpression = Input { Value = "(r1*g2) - (g1*r2)", },
+						Image1 = Input {
+							SourceOp = "ct1",
+							Source = "Output",
+						},
+						Image2 = Input {
+							SourceOp = "Background1_1",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 767.858, -502.945 } },
+				},
+				ct2LUTIn1 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 0, Blue = 0 },
+				},
+				ct2LUTIn2 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 204, Blue = 0 },
+				},
+				ct2LUTIn3 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 0, Blue = 204 },
+				},
+				ct2LUTIn4 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 204, Blue = 204 },
+				},
+				ct1 = Custom {
+					CtrlWZoom = false,
+					NameSet = true,
+					Inputs = {
+						LUTIn1 = Input {
+							SourceOp = "CustomTool1_2_2LUTIn1",
+							Source = "Value",
+						},
+						LUTIn2 = Input {
+							SourceOp = "CustomTool1_2_2LUTIn2",
+							Source = "Value",
+						},
+						LUTIn3 = Input {
+							SourceOp = "CustomTool1_2_2LUTIn3",
+							Source = "Value",
+						},
+						LUTIn4 = Input {
+							SourceOp = "CustomTool1_2_2LUTIn4",
+							Source = "Value",
+						},
+						Intermediate1 = Input { Value = "1/width", },
+						Intermediate2 = Input { Value = "1/height", },
+						RedExpression = Input { Value = "getr1w(x,y) - getr1w(x-i1,y)", },
+						GreenExpression = Input { Value = "getr1w(x,y) - getr1w(x,y-i2)", },
+						BlueExpression = Input { Value = "0", },
+						AlphaExpression = Input { Value = "0", },
+					},
+					ViewInfo = OperatorInfo { Pos = { 767.858, -540.108 } },
+				},
+				CustomTool1_2_2LUTIn1 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 0, Blue = 0 },
+					CtrlWShown = false,
+				},
+				CustomTool1_2_2LUTIn2 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 204, Blue = 0 },
+					CtrlWShown = false,
+				},
+				CustomTool1_2_2LUTIn3 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 0, Green = 0, Blue = 204 },
+					CtrlWShown = false,
+				},
+				CustomTool1_2_2LUTIn4 = LUTBezier {
+					KeyColorSplines = {
+						[0] = {
+							[0] = { 0, RH = { 0.333333333333333, 0.333333333333333 }, Flags = { Linear = true } },
+							[1] = { 1, LH = { 0.666666666666667, 0.666666666666667 }, Flags = { Linear = true } }
+						}
+					},
+					SplineColor = { Red = 204, Green = 204, Blue = 204 },
+					CtrlWShown = false,
+				},
+				BrightnessContrast1 = BrightnessContrast {
+					Inputs = {
+						Input = Input {
+							SourceOp = "ct2",
+							Source = "Output",
+						},
+					},
+					ViewInfo = OperatorInfo { Pos = { 767.858, -469.945 } },
+				}
+			},
+		}
+	},
+	ActiveTool = "stx_vectorCurl"
+}
